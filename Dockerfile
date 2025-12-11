@@ -1,14 +1,12 @@
-# Dockerfile
-FROM python:3.11-slim
+# Lambda Python 3.11 base image
+FROM public.ecr.aws/lambda/python:3.11
 
-WORKDIR /app
+# Install dependencies
+COPY src/calculator/requirements.txt .
+RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
-# Copy and install dependencies
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Copy application code
+COPY src/calculator/ ${LAMBDA_TASK_ROOT}
 
-# Copy source code
-COPY . .
-
-# Default command
-CMD ["pytest", "-q"]
+# Lambda handler
+CMD [ "app.lambda_handler" ]

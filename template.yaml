@@ -1,24 +1,26 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Calculator Lambda App
+Description: Calculator Lambda container app
 
 Resources:
-  CalculatorFunction:
+  CalculatorAPI:
     Type: AWS::Serverless::Function
     Properties:
+      PackageType: Image
       FunctionName: CalculatorFunction
-      Handler: app.lambda_handler
-      Runtime: python3.11
-      CodeUri: src/calculator/
-      MemorySize: 128
       Timeout: 10
-      Policies:
-        - AWSLambdaBasicExecutionRole
-      Environment:
-        Variables:
-          STAGE: dev
+      MemorySize: 128
+      Events:
+        ApiTrigger:
+          Type: Api
+          Properties:
+            Path: /calc
+            Method: POST
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: .
+      DockerTag: latest
 
 Outputs:
-  CalculatorFunctionArn:
-    Description: ARN of Calculator Lambda
-    Value: !GetAtt CalculatorFunction.Arn
+  ApiUrl:
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/calc"

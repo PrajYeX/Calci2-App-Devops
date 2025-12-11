@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Calculator Lambda App
+Resources:
+  CalculatorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: CalculatorFunction
+      Handler: app.lambda_handler
+      Runtime: python3.11
+      CodeUri: CalculatorFunction
+      MemorySize: 128
+      Timeout: 10
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      Environment:
+        Variables:
+          STAGE: dev
+    Metadata:
+      SamResourceId: CalculatorFunction
+Outputs:
+  CalculatorFunctionArn:
+    Description: ARN of Calculator Lambda
+    Value:
+      Fn::GetAtt:
+      - CalculatorFunction
+      - Arn
