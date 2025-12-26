@@ -22,7 +22,8 @@ pipeline {
                     python3 -m pip install --upgrade pip
                     python3 -m pip install -r requirements.txt
                     python3 -m pip install pytest
-                    PYTHONPATH=src python3 -m pytest src/tests/
+                    export PYTHONPATH=${WORKSPACE}/src
+                    python3 -m pytest
                 '''
             }
         }
