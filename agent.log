@@ -1,0 +1,15 @@
+nohup: ignoring input
+Dec 11, 2025 6:36:38 AM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+INFO: Using /home/jenkins/agent/remoting as a remoting work directory
+Dec 11, 2025 6:36:38 AM org.jenkinsci.remoting.engine.WorkDirManager setupLogging
+INFO: Both error and output logs will be printed to /home/jenkins/agent/remoting
+Dec 11, 2025 6:36:38 AM hudson.remoting.Launcher createEngine
+INFO: Setting up agent: docker-agent
+Dec 11, 2025 6:36:38 AM hudson.remoting.Engine startEngine
+INFO: Using Remoting version: 3309.v27b_9314fd1a_4
+Dec 11, 2025 6:36:38 AM org.jenkinsci.remoting.engine.WorkDirManager initializeWorkDir
+INFO: Using /home/jenkins/agent/remoting as a remoting work directory
+Dec 11, 2025 6:36:39 AM hudson.remoting.Launcher$CuiListener status
+INFO: WebSocket connection open
+Dec 11, 2025 6:36:39 AM hudson.remoting.Launcher$CuiListener status
+INFO: Connected
