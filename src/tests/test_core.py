@@ -1,6 +1,6 @@
 # tests/test_core.py
 import pytest
-from calculator.core import add, sub, mul
+from calculator.calculator.core import add, sub, mul
 
 def test_add_basic():
     assert add(2, 3) == 5
