@@ -22,7 +22,7 @@ pipeline {
                     python3 -m pip install --upgrade pip
                     python3 -m pip install -r requirements.txt
                     python3 -m pip install pytest
-                    python3 -m pytest src/tests/
+                    PYTHONPATH=src python3 -m pytest src/tests/
                 '''
             }
         }
