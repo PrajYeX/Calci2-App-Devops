@@ -38,7 +38,9 @@ pipeline {
 
         stage('SAM Build') {
             steps {
-                sh 'sam build'
+                withEnv(['PATH+SAM=/usr/local/bin']) {
+                    sh 'sam build'
+                }
             }
         }
 
