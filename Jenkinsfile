@@ -46,15 +46,17 @@ pipeline {
 
         stage('SAM Deploy') {
             steps {
-                sh '''
-                    sam deploy \
-                        --stack-name $STACK_NAME \
-                        --capabilities CAPABILITY_IAM \
-                        --resolve-s3 \
-                        --resolve-image-repos \
-                        --no-confirm-changeset \
-                        --no-fail-on-empty-changeset
-                '''
+                withCredentials([aws(credentialsId: 'aws-credentials')]) {
+                    sh '''
+                        sam deploy \
+                            --stack-name $STACK_NAME \
+                            --capabilities CAPABILITY_IAM \
+                            --resolve-s3 \
+                            --resolve-image-repos \
+                            --no-confirm-changeset \
+                            --no-fail-on-empty-changeset
+                    '''
+                }
             }
         }
     }
